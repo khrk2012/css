@@ -1,0 +1,383 @@
+.imperium-d8-sheet {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ----------------------------------------- */
+/* Header */
+/* ----------------------------------------- */
+
+.imperium-d8 .header-subrow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.imperium-d8 .header-subrow .field {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 8px;
+  align-items: center;
+}
+
+.imperium-d8 .header-subrow label {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.imperium-d8 .sheet-header {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.imperium-d8 .sheet-header img.profile {
+  width: 170px;
+  height: 235px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.imperium-d8 .rank-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.imperium-d8 .rank-row input {
+  flex: 1;
+  min-width: 0;
+}
+
+.imperium-d8 img.rank-img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--color-border-light-2);
+  background: rgba(0,0,0,0.05);
+  cursor: pointer;
+}
+
+.imperium-d8 .charname input {
+  font-size: 22px;
+  height: 32px;
+}
+
+.imperium-d8 .top-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 10px;
+}
+
+/* ----------------------------------------- */
+/* Shell Layout (side tabs) */
+/* ----------------------------------------- */
+
+.imperium-d8 .imperium-shell {
+  display: flex;
+  gap: 10px;
+  min-height: 560px;
+}
+
+.imperium-d8 .sheet-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.imperium-d8 .pane {
+  border: 1px solid var(--color-border-light-2);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+/* Side Tabs (Spectre Ops inspired) */
+.imperium-d8 .sheet-tabs {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid var(--color-border-light-2);
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(20,20,24,0.65), rgba(10,10,12,0.60));
+}
+
+.imperium-d8 .sheet-tabs .item {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.92);
+}
+
+.imperium-d8 .sheet-tabs .item span {
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.imperium-d8 .sheet-tabs .item.active {
+  background: color-mix(in srgb, var(--imp-accent, #F7AC08) 22%, transparent);
+  border-color: color-mix(in srgb, var(--imp-accent, #F7AC08) 70%, transparent);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.25) inset;
+}
+
+/* Accent helpers */
+.imperium-d8 .pane h3,
+.imperium-d8 .card-title h3 {
+  position: relative;
+}
+
+.imperium-d8 .pane h3::after,
+.imperium-d8 .card-title h3::after {
+  content: "";
+  display: block;
+  height: 2px;
+  margin-top: 6px;
+  width: 100%;
+  background: color-mix(in srgb, var(--imp-accent, #F7AC08) 70%, transparent);
+}
+
+.imperium-d8 .stats-card,
+.imperium-d8 .notes-card {
+  border: 1px solid var(--color-border-light-2);
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.imperium-d8 .right-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.imperium-d8 .quick-card {
+  border: 1px solid var(--color-border-light-2);
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.imperium-d8 .card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.imperium-d8 .card-title-right {
+  font-size: 12px;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+.imperium-d8 .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+}
+
+.imperium-d8 .stat {
+  display: grid;
+  gap: 4px;
+}
+
+.imperium-d8 .stat label {
+  font-weight: 700;
+  text-align: center;
+}
+
+.imperium-d8 .stat input {
+  text-align: center;
+}
+
+.imperium-d8 .derived-grid {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.imperium-d8 .derived {
+  display: grid;
+  gap: 4px;
+}
+
+.imperium-d8 .derived label {
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.imperium-d8 .derived .two {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 6px;
+  align-items: center;
+}
+
+.imperium-d8 .roll-buttons {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+/* Legacy horizontal tabs removed in favor of side tabs */
+
+.imperium-d8 .section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 6px 0;
+}
+
+.imperium-d8 .item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.imperium-d8 .item-list .item {
+  display: grid;
+  grid-template-columns: 1fr 120px 120px 70px;
+  gap: 8px;
+  align-items: center;
+  padding: 6px;
+  border-bottom: 1px solid var(--color-border-light-2);
+}
+
+.imperium-d8 .item-list.compact .item {
+  grid-template-columns: 1fr 90px 70px;
+}
+
+.imperium-d8 .item-name {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.imperium-d8 .item-name img {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.imperium-d8 .item-prop {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.imperium-d8 .item-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.imperium-d8 .skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 80px;
+  gap: 8px;
+}
+
+.imperium-d8 .skill-row {
+  display: contents;
+}
+
+.imperium-d8 .skill-row label {
+  align-self: center;
+}
+
+.imperium-d8 .skill-row input {
+  text-align: center;
+}
+
+.imperium-d8 .settings-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  max-width: 420px;
+}
+
+.imperium-d8 .form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.imperium-d8 .field label {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.imperium-d8 .setting-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.imperium-d8 .hint {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* Journal drop zone */
+.imperium-d8 .journal-drop {
+  border: 2px dashed rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  padding: 18px;
+  margin-top: 12px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.imperium-d8 .journal-drop-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.imperium-d8 .journal-drop-title {
+  font-weight: 700;
+}
+
+.imperium-d8 .journal-drop-current {
+  opacity: 0.9;
+}
+
+.imperium-d8-dialog .form-group {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 10px;
+  align-items: center;
+  margin: 8px 0;
+}
+
+
+/* Team Sheet */
+.imperium.sheet.team .team-header { display: grid; grid-template-columns: 190px 1fr; gap: 12px; align-items: start; }
+.imperium.sheet.team .team-img { width: 170px; height: 235px; object-fit: cover; border-radius: 10px; border: 1px solid rgba(0,0,0,0.25); }
+.imperium.sheet.team .team-dropzone { margin-top: 8px; padding: 10px; border: 1px dashed rgba(0,0,0,0.35); border-radius: 10px; background: rgba(255,255,255,0.4); }
+.imperium.sheet.team .team-roster { margin-top: 10px; }
+.imperium.sheet.team .roster-head, .imperium.sheet.team .roster-row { display: grid; grid-template-columns: 1.4fr 1.6fr 0.8fr 0.8fr 1.2fr 0.8fr; gap: 8px; align-items: center; }
+.imperium.sheet.team .roster-head { font-weight: 700; padding: 6px 8px; border-bottom: 1px solid rgba(0,0,0,0.2); }
+.imperium.sheet.team .roster-row { padding: 6px 8px; border-bottom: 1px solid rgba(0,0,0,0.12); }
+.imperium.sheet.team .roster-name { cursor: pointer; text-decoration: underline; }
+.imperium.sheet.team .track-box { display: flex; gap: 4px; align-items: center; }
+.imperium.sheet.team .track-input { width: 52px; text-align: center; }
+.imperium.sheet.team .tiny-btn { width: 28px; height: 28px; }
+.imperium.sheet.team .btn-row { display: flex; gap: 6px; }
+.imperium.sheet.team .roll-btn { padding: 4px 8px; }
+.imperium.sheet.team .danger-btn { padding: 4px 8px; }

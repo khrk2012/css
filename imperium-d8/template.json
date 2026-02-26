@@ -1,0 +1,160 @@
+{
+  "Actor": {
+    "character": {
+      "meta": {
+        "rank": "",
+        "callsign": "",
+        "rankImg": ""
+      },
+      "front": {
+        "notes": ""
+      },
+      "bio": {
+        "rank": "Citizen",
+        "callsign": "",
+        "cohort": "",
+        "homeworld": "",
+        "background": "",
+        "notes": "",
+        "journalUuid": ""
+      },
+      "attributes": {
+        "str": {
+          "value": 2
+        },
+        "dex": {
+          "value": 2
+        },
+        "end": {
+          "value": 2
+        },
+        "awr": {
+          "value": 2
+        },
+        "int": {
+          "value": 2
+        },
+        "wil": {
+          "value": 2
+        }
+      },
+      "derived": {
+        "def": {
+          "value": 2
+        },
+        "resolve": {
+          "value": 2
+        }
+      },
+      "trackers": {
+        "wounds": {
+          "value": 0,
+          "max": 3
+        },
+        "stress": {
+          "value": 0,
+          "max": 6
+        },
+        "momentum": {
+          "value": 1,
+          "max": 3
+        }
+      },
+      "armor": {
+        "dr": 0
+      },
+      "skills": {
+        "marksmanship": {
+          "rank": 0
+        },
+        "quickdraw": {
+          "rank": 0
+        },
+        "targetAcquisition": {
+          "rank": 0
+        },
+        "closeCombat": {
+          "rank": 0
+        },
+        "takedown": {
+          "rank": 0
+        },
+        "fortitude": {
+          "rank": 0
+        },
+        "hacking": {
+          "rank": 0
+        },
+        "demolitions": {
+          "rank": 0
+        },
+        "fieldMedicine": {
+          "rank": 0
+        },
+        "resolveTraining": {
+          "rank": 0
+        },
+        "interrogation": {
+          "rank": 0
+        },
+        "tactics": {
+          "rank": 0
+        },
+        "stealth": {
+          "rank": 0
+        },
+        "athletics": {
+          "rank": 0
+        },
+        "survival": {
+          "rank": 0
+        },
+        "persuasion": {
+          "rank": 0
+        },
+        "mechanics": {
+          "rank": 0
+        }
+      },
+      "settings": {
+        "skillReduces": "range-only",
+        "minTN": 4,
+        "accentPreset": "gold",
+        "accent": "#F7AC08"
+      }
+    },
+    "team": {
+      "roster": []
+    }
+  },
+  "Item": {
+    "weapon": {
+      "category": "ranged",
+      "attackStat": "dex",
+      "skillKey": "marksmanship",
+      "weaponDice": "1d8",
+      "damage": {
+        "base": 1,
+        "ap": 0
+      },
+      "traits": {
+        "braceRequired": false,
+        "twoHanded": false
+      },
+      "notes": ""
+    },
+    "skill": {
+      "key": "",
+      "stat": "dex",
+      "rank": 0,
+      "notes": ""
+    },
+    "armor": {
+      "dr": 1,
+      "notes": ""
+    },
+    "gear": {
+      "notes": ""
+    }
+  }
+}

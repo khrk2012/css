@@ -1,0 +1,71 @@
+{
+  "id": "imperium-d8",
+  "title": "Imperium D8 Skirmish",
+  "description": "Imperium-themed d8 dice-pool skirmish/RPG system (Foundry VTT v13+).",
+  "version": "0.1.5",
+  "authors": [
+    {
+      "name": "Dean Kirkpatrick (concept)",
+      "url": ""
+    }
+  ],
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13",
+    "maximum": "13"
+  },
+  "esmodules": [
+    "scripts/init.js"
+  ],
+  "styles": [
+    "styles/imperium.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "documentTypes": {
+    "Actor": {
+      "character": {},
+      "team": {}
+    },
+    "Item": {
+      "weapon": {},
+      "skill": {},
+      "armor": {},
+      "gear": {}
+    }
+  },
+  "grid": {
+    "distance": 1,
+    "units": "in"
+  },
+  "socket": true,
+  "template": "template.json",
+  "packs": [
+    {
+      "name": "skills",
+      "label": "Imperium Skills",
+      "path": "packs/skills.db",
+      "type": "Item",
+      "system": "imperium-d8"
+    },
+    {
+      "name": "weapons",
+      "label": "Imperium Weapons",
+      "path": "packs/weapons.db",
+      "type": "Item",
+      "system": "imperium-d8"
+    },
+    {
+      "name": "melee-weapons",
+      "label": "Imperium Melee Weapons",
+      "path": "packs/melee-weapons.db",
+      "type": "Item",
+      "system": "imperium-d8"
+    }
+  ]
+}

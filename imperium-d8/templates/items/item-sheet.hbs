@@ -1,0 +1,127 @@
+<form class="imperium-d8-sheet" autocomplete="off">
+  <header class="sheet-header">
+    <img class="profile" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
+      <div class="type-hint">Type: <b>{{itemType}}</b></div>
+    </div>
+  </header>
+
+  {{#if (eq itemType "weapon")}}
+  <section class="item-section">
+    <h3>Weapon</h3>
+
+    <div class="form-group">
+      <label>Category</label>
+      <select name="system.category">
+        {{#each weaponCategories as |c|}}
+          <option value="{{c.key}}" {{#if (eq ../system.category c.key)}}selected{{/if}}>{{c.label}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Attack Stat</label>
+      <select name="system.attackStat">
+        {{#each attackStats as |s|}}
+          <option value="{{s.key}}" {{#if (eq ../system.attackStat s.key)}}selected{{/if}}>{{s.label}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Skill Key</label>
+      <select name="system.skillKey">
+        {{#each skillKeys as |sk|}}
+          <option value="{{sk.key}}" {{#if (eq ../system.skillKey sk.key)}}selected{{/if}}>{{sk.label}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Weapon Dice (adds to attack roll)</label>
+      <input type="text" name="system.weaponDice" value="{{system.weaponDice}}" placeholder="e.g. 2d10"/>
+    </div>
+
+    <div class="form-group">
+      <label>Base Damage</label>
+      <input type="number" name="system.damage.base" value="{{system.damage.base}}" min="0"/>
+    </div>
+
+    <div class="form-group">
+      <label>Armor Piercing (AP)</label>
+      <input type="number" name="system.damage.ap" value="{{system.damage.ap}}" min="0"/>
+    </div>
+
+    <div class="form-group">
+      <label>Brace Required</label>
+      <input type="checkbox" name="system.traits.braceRequired" {{checked system.traits.braceRequired}}/>
+    </div>
+
+    <div class="form-group">
+      <label>Two-Handed</label>
+      <input type="checkbox" name="system.traits.twoHanded" {{checked system.traits.twoHanded}}/>
+    </div>
+
+    <div class="form-group">
+      <label>Notes</label>
+      <textarea name="system.notes" rows="6">{{system.notes}}</textarea>
+    </div>
+  </section>
+  {{/if}}
+
+  {{#if (eq itemType "skill")}}
+  <section class="item-section">
+    <h3>Skill Item</h3>
+    <p class="hint">Skill Items can override the actor's skill map. Set a <b>key</b> matching a skill name (e.g. <code>marksmanship</code>).</p>
+
+    <div class="form-group">
+      <label>Key</label>
+      <input type="text" name="system.key" value="{{system.key}}" placeholder="e.g. marksmanship"/>
+    </div>
+
+    <div class="form-group">
+      <label>Governing Stat</label>
+      <select name="system.stat">
+        {{#each skillStats as |s|}}
+          <option value="{{s.key}}" {{#if (eq ../system.stat s.key)}}selected{{/if}}>{{s.label}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Rank</label>
+      <input type="number" name="system.rank" value="{{system.rank}}" min="0" max="6"/>
+    </div>
+
+    <div class="form-group">
+      <label>Notes</label>
+      <textarea name="system.notes" rows="6">{{system.notes}}</textarea>
+    </div>
+  </section>
+  {{/if}}
+
+  {{#if (eq itemType "armor")}}
+  <section class="item-section">
+    <h3>Armor</h3>
+    <div class="form-group">
+      <label>Damage Reduction (DR)</label>
+      <input type="number" name="system.dr" value="{{system.dr}}" min="0"/>
+    </div>
+    <div class="form-group">
+      <label>Notes</label>
+      <textarea name="system.notes" rows="6">{{system.notes}}</textarea>
+    </div>
+  </section>
+  {{/if}}
+
+  {{#if (eq itemType "gear")}}
+  <section class="item-section">
+    <h3>Gear</h3>
+    <div class="form-group">
+      <label>Notes</label>
+      <textarea name="system.notes" rows="10">{{system.notes}}</textarea>
+    </div>
+  </section>
+  {{/if}}
+</form>

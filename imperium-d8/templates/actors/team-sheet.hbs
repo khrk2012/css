@@ -1,0 +1,72 @@
+<form class="imperium sheet team" autocomplete="off">
+  <header class="sheet-header team-header">
+    <div class="header-left">
+      <img class="profile-img team-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+    </div>
+    <div class="header-right">
+      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"/></h1>
+      <div class="team-subtitle">Team / Squad Roster</div>
+      <div class="team-dropzone" data-dropzone="roster">
+        <span>Drag &amp; drop Actors here to add them to the roster</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="team-roster">
+    <div class="roster-head">
+      <div class="col-name">Name</div>
+      <div class="col-weapon">Weapon</div>
+      <div class="col-track">Wounds</div>
+      <div class="col-track">Stress</div>
+      <div class="col-actions">Rolls</div>
+      <div class="col-actions">Manage</div>
+    </div>
+
+    {{#each roster as |r|}}
+      <div class="roster-row" data-index="{{r.index}}" data-actor-uuid="{{r.actorUuid}}">
+        <div class="col-name">
+          <a class="roster-name" data-action="open-actor" title="Open actor sheet">{{r.name}}</a>
+        </div>
+
+        <div class="col-weapon">
+          <select class="weapon-select" data-action="set-weapon">
+            {{#each r.weapons as |w|}}
+              <option value="{{w.uuid}}" {{#if w.selected}}selected{{/if}}>{{w.name}}</option>
+            {{/each}}
+          </select>
+        </div>
+
+        <div class="col-track">
+          <div class="track-box">
+            <button type="button" class="tiny-btn" data-action="wounds-dec">−</button>
+            <input class="track-input" type="number" value="{{r.wounds}}" disabled/>
+            <button type="button" class="tiny-btn" data-action="wounds-inc">+</button>
+          </div>
+        </div>
+
+        <div class="col-track">
+          <div class="track-box">
+            <button type="button" class="tiny-btn" data-action="stress-dec">−</button>
+            <input class="track-input" type="number" value="{{r.stress}}" disabled/>
+            <button type="button" class="tiny-btn" data-action="stress-inc">+</button>
+          </div>
+        </div>
+
+        <div class="col-actions">
+          <div class="btn-row">
+            <button type="button" class="roll-btn" data-action="roll-ranged" {{#unless r.canRanged}}disabled{{/unless}}>Ranged</button>
+            <button type="button" class="roll-btn" data-action="roll-melee" {{#unless r.canMelee}}disabled{{/unless}}>Melee</button>
+          </div>
+        </div>
+
+        <div class="col-actions">
+          <button type="button" class="danger-btn" data-action="remove-member">Remove</button>
+        </div>
+      </div>
+    {{/each}}
+
+    {{#unless roster.length}}
+      <p class="hint">No members yet. Drag Actors onto the dropzone above.</p>
+    {{/unless}}
+  </section>
+</form>

@@ -1,0 +1,17 @@
+{"_id":"0443d19a344f4885","name":"Fortitude","type":"skill","img":"icons/svg/book.svg","system":{"key":"fortitude","stat":"end","rank":0,"notes":""},"effects":[],"flags":{}}
+{"_id":"19aa7cff54fb4dee","name":"Resolve Training","type":"skill","img":"icons/svg/book.svg","system":{"key":"resolveTraining","stat":"wil","rank":0,"notes":""},"effects":[],"flags":{}}
+{"_id":"203d66e616e94c6d","name":"Interrogation","type":"skill","img":"icons/svg/book.svg","system":{"key":"interrogation","stat":"wil","rank":0,"notes":""},"effects":[],"flags":{}}
+{"_id":"207f3a4242dc4929","name":"Quickdraw","type":"skill","img":"icons/svg/book.svg","system":{"key":"quickdraw","stat":"dex","rank":0,"notes":""},"effects":[],"flags":{}}
+{"_id":"2a69274155a64576","name":"Persuasion","type":"skill","img":"icons/svg/book.svg","system":{"key":"persuasion","stat":"wil","rank":0,"notes":""},"effects":[],"flags":{}}
+{"_id":"3ab47ebf60db4c74","name":"Marksmanship","type":"skill","img":"icons/svg/book.svg","system":{"key":"marksmanship","stat":"dex","rank":0,"notes":""},"effects":[],"flags":{}}
+{"_id":"4a4a666f99d646ed","name":"Demolitions","type":"skill","img":"icons/svg/book.svg","system":{"key":"demolitions","stat":"int","rank":0,"notes":""},"effects":[],"flags":{}}
+{"_id":"5574f881becc4ba4","name":"Stealth","type":"skill","img":"icons/svg/book.svg","system":{"key":"stealth","stat":"dex","rank":0,"notes":""},"effects":[],"flags":{}}
+{"_id":"6b7f103470414e1d","name":"Hacking","type":"skill","img":"icons/svg/book.svg","system":{"key":"hacking","stat":"int","rank":0,"notes":""},"effects":[],"flags":{}}
+{"_id":"89b8c9d9afc243b1","name":"Tactics","type":"skill","img":"icons/svg/book.svg","system":{"key":"tactics","stat":"int","rank":0,"notes":""},"effects":[],"flags":{}}
+{"_id":"a55bf1ef7cf24d60","name":"Target Acquisition","type":"skill","img":"icons/svg/book.svg","system":{"key":"targetAcquisition","stat":"awr","rank":0,"notes":""},"effects":[],"flags":{}}
+{"_id":"b7b547b4958f4181","name":"Close Combat","type":"skill","img":"icons/svg/book.svg","system":{"key":"closeCombat","stat":"str","rank":0,"notes":""},"effects":[],"flags":{}}
+{"_id":"cf09f571e2814217","name":"Athletics","type":"skill","img":"icons/svg/book.svg","system":{"key":"athletics","stat":"end","rank":0,"notes":""},"effects":[],"flags":{}}
+{"_id":"dc4882fb96c3410a","name":"Mechanics","type":"skill","img":"icons/svg/book.svg","system":{"key":"mechanics","stat":"int","rank":0,"notes":""},"effects":[],"flags":{}}
+{"_id":"e8c7de6e912f46be","name":"Survival","type":"skill","img":"icons/svg/book.svg","system":{"key":"survival","stat":"awr","rank":0,"notes":""},"effects":[],"flags":{}}
+{"_id":"f303500efe51481d","name":"Takedown","type":"skill","img":"icons/svg/book.svg","system":{"key":"takedown","stat":"dex","rank":0,"notes":""},"effects":[],"flags":{}}
+{"_id":"f5f76340bc124b10","name":"Field Medicine","type":"skill","img":"icons/svg/book.svg","system":{"key":"fieldMedicine","stat":"int","rank":0,"notes":""},"effects":[],"flags":{}}

@@ -1,0 +1,176 @@
+<form class="{{cssClass}}" autocomplete="off" style="--imp-accent: {{impAccent}};">
+  <header class="imp-header">
+    <div class="imp-portrait">
+      <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+    </div>
+    <div class="imp-head-main">
+      <input class="imp-name" name="name" type="text" value="{{actor.name}}" placeholder="Name"/>
+      <div class="imp-head-fields">
+        <div class="imp-field">
+          <label>Rank</label>
+          <input type="text" name="system.meta.rank" value="{{system.meta.rank}}"/>
+        </div>
+        <div class="imp-field">
+          <label>Callsign</label>
+          <input type="text" name="system.meta.callsign" value="{{system.meta.callsign}}"/>
+        </div>
+        <div class="imp-field imp-derived">
+          <label>DEF</label>
+          <input type="number" value="{{system.derived.def.value}}" disabled/>
+        </div>
+        <div class="imp-field imp-derived">
+          <label>Resolve</label>
+          <input type="number" value="{{system.derived.resolve.value}}" disabled/>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="imp-layout">
+    <nav class="imp-tabs" data-group="primary">
+      <a class="item" data-tab="sheet"><span>Sheet</span></a>
+      <a class="item" data-tab="bio"><span>Bio</span></a>
+      <a class="item" data-tab="skills"><span>Skills</span></a>
+      <a class="item" data-tab="equipment"><span>Equipment</span></a>
+      <a class="item" data-tab="settings"><span>Settings</span></a>
+    </nav>
+
+    <div class="imp-body" data-group="primary">
+      <!-- FRONT SHEET -->
+      <div class="tab" data-tab="sheet" data-group="primary">
+        <div class="imp-grid">
+          <div class="imp-card">
+            <div class="imp-card-title">Attributes (d8)</div>
+            <div class="imp-attrs">
+              <div class="imp-attr"><label>STR</label><input type="number" name="system.attributes.str.value" value="{{system.attributes.str.value}}" min="1" max="6"/></div>
+              <div class="imp-attr"><label>DEX</label><input type="number" name="system.attributes.dex.value" value="{{system.attributes.dex.value}}" min="1" max="6"/></div>
+              <div class="imp-attr"><label>END</label><input type="number" name="system.attributes.end.value" value="{{system.attributes.end.value}}" min="1" max="6"/></div>
+              <div class="imp-attr"><label>AWR</label><input type="number" name="system.attributes.awr.value" value="{{system.attributes.awr.value}}" min="1" max="6"/></div>
+              <div class="imp-attr"><label>INT</label><input type="number" name="system.attributes.int.value" value="{{system.attributes.int.value}}" min="1" max="6"/></div>
+              <div class="imp-attr"><label>WIL</label><input type="number" name="system.attributes.wil.value" value="{{system.attributes.wil.value}}" min="1" max="6"/></div>
+            </div>
+            <div class="imp-subrow">
+              <div class="imp-attr"><label>Armor</label><input type="number" name="system.armor.value" value="{{system.armor.value}}" min="0"/></div>
+              <div class="imp-attr"><label>Wounds</label><input type="number" name="system.health.wounds" value="{{system.health.wounds}}" min="0"/></div>
+              <div class="imp-attr"><label>Max</label><input type="number" name="system.health.max" value="{{system.health.max}}" min="1"/></div>
+            </div>
+          </div>
+
+          <div class="imp-card">
+            <div class="imp-card-title">Combat</div>
+            <div class="imp-combat-buttons">
+              <button type="button" class="imp-btn imp-btn-ranged">Ranged Attack</button>
+              <button type="button" class="imp-btn imp-btn-melee">Melee Attack</button>
+            </div>
+            <div class="imp-hint">Tip: target a token to auto-read DEF/Armor for TN & damage.</div>
+          </div>
+
+          <div class="imp-card imp-card-wide">
+            <div class="imp-card-title">Field Notes</div>
+            <textarea name="system.front.notes" rows="6">{{system.front.notes}}</textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- BIO -->
+      <div class="tab" data-tab="bio" data-group="primary">
+        <div class="imp-grid">
+          <div class="imp-card">
+            <div class="imp-card-title">Bio</div>
+            <div class="imp-form">
+              <div class="imp-field"><label>Rank (Bio)</label><input type="text" name="system.bio.rank" value="{{system.bio.rank}}"/></div>
+              <div class="imp-field"><label>Callsign (Bio)</label><input type="text" name="system.bio.callsign" value="{{system.bio.callsign}}"/></div>
+              <div class="imp-field"><label>Cohort / Unit</label><input type="text" name="system.bio.cohort" value="{{system.bio.cohort}}"/></div>
+              <div class="imp-field"><label>Homeworld</label><input type="text" name="system.bio.homeworld" value="{{system.bio.homeworld}}"/></div>
+            </div>
+          </div>
+          <div class="imp-card imp-card-wide">
+            <div class="imp-card-title">Background</div>
+            <textarea name="system.bio.background" rows="6">{{system.bio.background}}</textarea>
+          </div>
+          <div class="imp-card imp-card-wide">
+            <div class="imp-card-title">Notes (Bio)</div>
+            <textarea name="system.bio.notes" rows="6">{{system.bio.notes}}</textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- SKILLS -->
+      <div class="tab" data-tab="skills" data-group="primary">
+        <div class="imp-card">
+          <div class="imp-card-title">Skills</div>
+          <div class="imp-hint">Drag Skill items onto the sheet to manage via Items. Skill Items override these ranks.</div>
+          <table class="imp-table">
+            <thead><tr><th>Skill</th><th>Stat</th><th>Rank</th></tr></thead>
+            <tbody>
+              {{#each skillsList as |s|}}
+              <tr>
+                <td>{{s.label}}</td>
+                <td class="imp-mono">{{upper s.stat}}</td>
+                <td><input type="number" name="system.skills.{{s.key}}.rank" value="{{s.rank}}" min="0" max="6"/></td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- EQUIPMENT -->
+      <div class="tab" data-tab="equipment" data-group="primary">
+        <div class="imp-grid">
+          <div class="imp-card">
+            <div class="imp-card-title">Weapons</div>
+            <div class="imp-equip">
+              <h4>Ranged</h4>
+              <ul>
+                {{#each rangedWeapons as |w|}}
+                  <li>{{w.name}} <span class="imp-mono">({{w.system.attackDice}})</span> {{#if w.system.ap}}<span class="imp-tag">AP {{w.system.ap}}</span>{{/if}}</li>
+                {{/each}}
+              </ul>
+              <h4>Melee</h4>
+              <ul>
+                {{#each meleeWeapons as |w|}}
+                  <li>{{w.name}} <span class="imp-mono">({{w.system.attackDice}})</span> {{#if w.system.ap}}<span class="imp-tag">AP {{w.system.ap}}</span>{{/if}}</li>
+                {{/each}}
+              </ul>
+            </div>
+            <div class="imp-hint">Drag weapons from compendiums onto the actor.</div>
+          </div>
+          <div class="imp-card">
+            <div class="imp-card-title">Armor</div>
+            <div class="imp-form">
+              <div class="imp-field"><label>Armor Value</label><input type="number" name="system.armor.value" value="{{system.armor.value}}" min="0"/></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="tab" data-tab="settings" data-group="primary">
+        <div class="imp-card">
+          <div class="imp-card-title">Sheet Theme</div>
+          <div class="imp-form">
+            <div class="imp-field">
+              <label>Accent Theme</label>
+              <select name="system.settings.accentTheme">
+                <option value="gold" {{#if (eq system.settings.accentTheme "gold")}}selected{{/if}}>Gold</option>
+                <option value="red" {{#if (eq system.settings.accentTheme "red")}}selected{{/if}}>Red</option>
+                <option value="blue" {{#if (eq system.settings.accentTheme "blue")}}selected{{/if}}>Blue</option>
+                <option value="green" {{#if (eq system.settings.accentTheme "green")}}selected{{/if}}>Green</option>
+                <option value="purple" {{#if (eq system.settings.accentTheme "purple")}}selected{{/if}}>Purple</option>
+                <option value="steel" {{#if (eq system.settings.accentTheme "steel")}}selected{{/if}}>Steel</option>
+                <option value="custom" {{#if (eq system.settings.accentTheme "custom")}}selected{{/if}}>Custom</option>
+              </select>
+            </div>
+            <div class="imp-field">
+              <label>Accent Color</label>
+              <input type="color" name="system.settings.accentColor" value="{{system.settings.accentColor}}"/>
+              <div class="imp-hint">Set theme to Custom to use this color.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</form>

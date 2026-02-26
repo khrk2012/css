@@ -1,0 +1,333 @@
+<form class="imperium-d8-sheet" autocomplete="off" style="--imp-accent: {{system.settings.accent}};">
+  <header class="sheet-header">
+    <img class="profile" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+      <div class="header-subrow">
+        <div class="field">
+          <label>Rank</label>
+          <div class="rank-row">
+            <img class="rank-img" src="{{#if system.meta.rankImg}}{{system.meta.rankImg}}{{else}}icons/svg/crown.svg{{/if}}" data-edit="system.meta.rankImg" title="Click to set rank insignia" />
+            <input type="text" name="system.meta.rank" value="{{system.meta.rank}}" placeholder="e.g., Legionary / SGT" />
+          </div>
+        </div>
+        <div class="field">
+          <label>Callsign</label>
+          <input type="text" name="system.meta.callsign" value="{{system.meta.callsign}}" placeholder="e.g., VAYNA" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="imperium-shell">
+    <!-- Side Tabs (Spectre Ops-style) -->
+    <nav class="sheet-tabs" data-group="primary" aria-label="Imperium Sheet Tabs">
+      <a class="item" data-tab="front"><i class="fas fa-id-badge"></i><span>Sheet</span></a>
+      <a class="item" data-tab="skills"><i class="fas fa-bullseye"></i><span>Skills</span></a>
+      <a class="item" data-tab="equipment"><i class="fas fa-briefcase"></i><span>Equipment</span></a>
+      <a class="item" data-tab="bio"><i class="fas fa-user"></i><span>Bio</span></a>
+      <a class="item" data-tab="journal"><i class="fas fa-book"></i><span>Journal</span></a>
+      <a class="item" data-tab="settings"><i class="fas fa-cog"></i><span>Settings</span></a>
+    </nav>
+
+    <section class="sheet-body">
+      <!-- FRONT / WORKING CHARACTER SHEET -->
+      <div class="tab" data-group="primary" data-tab="front">
+        <section class="top-grid">
+          <div class="stats-card">
+            <div class="card-title">
+              <h3>Operator Profile</h3>
+              <div class="card-title-right">d8 pools • Imperium Doctrine</div>
+            </div>
+
+            <div class="stats-grid">
+              <div class="stat"><label>STR</label><input type="number" name="system.attributes.str.value" value="{{system.attributes.str.value}}" min="1" max="6"/></div>
+              <div class="stat"><label>DEX</label><input type="number" name="system.attributes.dex.value" value="{{system.attributes.dex.value}}" min="1" max="6"/></div>
+              <div class="stat"><label>END</label><input type="number" name="system.attributes.end.value" value="{{system.attributes.end.value}}" min="1" max="6"/></div>
+              <div class="stat"><label>AWR</label><input type="number" name="system.attributes.awr.value" value="{{system.attributes.awr.value}}" min="1" max="6"/></div>
+              <div class="stat"><label>INT</label><input type="number" name="system.attributes.int.value" value="{{system.attributes.int.value}}" min="1" max="6"/></div>
+              <div class="stat"><label>WIL</label><input type="number" name="system.attributes.wil.value" value="{{system.attributes.wil.value}}" min="1" max="6"/></div>
+            </div>
+
+            <div class="derived-grid">
+              <div class="derived"><label>DEF</label><input type="number" value="{{system.derived.def.value}}" disabled/></div>
+              <div class="derived"><label>Resolve</label><input type="number" value="{{system.derived.resolve.value}}" disabled/></div>
+              <div class="derived"><label>Armor DR</label><input type="number" name="system.armor.dr" value="{{system.armor.dr}}" min="0"/></div>
+
+              <div class="derived"><label>Wounds</label>
+                <div class="two">
+                  <input type="number" name="system.trackers.wounds.value" value="{{system.trackers.wounds.value}}" min="0"/>
+                  <span>/</span>
+                  <input type="number" name="system.trackers.wounds.max" value="{{system.trackers.wounds.max}}" min="1" readonly/>
+                </div>
+              </div>
+
+              <div class="derived"><label>Stress</label>
+                <div class="two">
+                  <input type="number" name="system.trackers.stress.value" value="{{system.trackers.stress.value}}" min="0"/>
+                  <span>/</span>
+                  <input type="number" name="system.trackers.stress.max" value="{{system.trackers.stress.max}}" min="1"/>
+                </div>
+              </div>
+
+              <div class="derived"><label>Momentum</label>
+                <div class="two">
+                  <input type="number" name="system.trackers.momentum.value" value="{{system.trackers.momentum.value}}" min="0"/>
+                  <span>/</span>
+                  <input type="number" name="system.trackers.momentum.max" value="{{system.trackers.momentum.max}}" min="0" readonly/>
+                </div>
+              </div>
+            </div>
+
+            <div class="roll-buttons">
+              <button type="button" class="roll-ranged"><i class="fas fa-crosshairs"></i> Ranged</button>
+              <button type="button" class="roll-melee"><i class="fas fa-fist-raised"></i> Melee</button>
+              <button type="button" class="roll-check"><i class="fas fa-dice"></i> Check</button>
+            </div>
+          </div>
+
+          <div class="right-stack">
+            <div class="quick-card">
+              <div class="card-title">
+                <h3>Primary Weapon</h3>
+                <div class="card-title-right">
+                  <button type="button" class="item-create" data-type="weapon">+ Weapon</button>
+                </div>
+              </div>
+
+              <ol class="item-list compact">
+                {{#each weapons as |item|}}
+                  <li class="item" data-item-id="{{item.id}}">
+                    <div class="item-name">
+                      <img src="{{item.img}}" />
+                      <span>{{item.name}}</span>
+                    </div>
+                    <div class="item-prop">{{item.system.weaponDice}}</div>
+                    <div class="item-controls">
+                      <a class="item-edit" title="Edit"><i class="fas fa-edit"></i></a>
+                      <a class="item-delete" title="Delete"><i class="fas fa-trash"></i></a>
+                    </div>
+                  </li>
+                {{/each}}
+              </ol>
+            </div>
+
+            <div class="quick-card">
+              <div class="card-title">
+                <h3>Field Notes</h3>
+                <div class="card-title-right">Short notes for play</div>
+              </div>
+              <textarea name="system.front.notes" rows="10" placeholder="Ammo, contacts, mission notes...">{{system.front.notes}}</textarea>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- BIO -->
+      <div class="tab" data-group="primary" data-tab="bio">
+        <div class="pane">
+          <h3>Biography</h3>
+          <div class="form-grid">
+            <div class="field">
+              <label>Rank</label>
+              <input type="text" name="system.bio.rank" value="{{system.bio.rank}}" placeholder="Rank in service record" />
+            </div>
+            <div class="field">
+              <label>Callsign</label>
+              <input type="text" name="system.bio.callsign" value="{{system.bio.callsign}}" placeholder="Operational callsign" />
+            </div>
+            <div class="field">
+              <label>Cohort / Unit</label>
+              <input type="text" name="system.bio.cohort" value="{{system.bio.cohort}}" placeholder="e.g., 9th Cohort, CAI, Legion Recon" />
+            </div>
+            <div class="field">
+              <label>Homeworld</label>
+              <input type="text" name="system.bio.homeworld" value="{{system.bio.homeworld}}" placeholder="e.g., Astron Prime" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Background</label>
+            <textarea name="system.bio.background" rows="10" placeholder="Service record, origin, notable missions...">{{system.bio.background}}</textarea>
+          </div>
+
+          <div class="field">
+            <label>Notes</label>
+            <textarea name="system.bio.notes" rows="10" placeholder="Contacts, debts, intel, mission notes...">{{system.bio.notes}}</textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- JOURNAL LINK -->
+      <div class="tab" data-group="primary" data-tab="journal">
+        <div class="pane">
+          <div class="section-header">
+            <h3>Linked Journal</h3>
+            <div class="controls">
+              <button type="button" class="open-journal"><i class="fas fa-external-link-alt"></i> Open</button>
+              <button type="button" class="clear-journal"><i class="fas fa-times"></i> Clear</button>
+            </div>
+          </div>
+
+          <p class="hint">Drag a Journal Entry from the sidebar and drop it into the box below. This stores a link to that Journal for this character.</p>
+
+          <div class="journal-row">
+            <div class="field">
+              <label>Journal UUID</label>
+              <input type="text" name="system.bio.journalUuid" value="{{system.bio.journalUuid}}" placeholder="@UUID[...] or JournalEntry.XXXXXXXX" />
+            </div>
+          </div>
+
+          <div class="journal-drop" data-drop="journal">
+            <div class="journal-drop-inner">
+              <div class="journal-drop-title">Drop Journal Here</div>
+              {{#if bioJournalName}}
+                <div class="journal-drop-current">Linked: <strong>{{bioJournalName}}</strong></div>
+              {{else}}
+                <div class="journal-drop-current">No Journal linked yet.</div>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SKILLS -->
+      <div class="tab" data-group="primary" data-tab="skills">
+        <div class="pane">
+          <div class="section-header">
+            <h3>Skills (TN reduction)</h3>
+            <div class="controls">
+              <button type="button" class="item-create" data-type="skill">+ Skill Item</button>
+            </div>
+          </div>
+
+          <p class="hint">Drag Skill Items here. Each Skill Item stores its own rank and is used for rolls.</p>
+
+          <ol class="item-list">
+            {{#each skillItems as |item|}}
+              <li class="item" data-item-id="{{item.id}}">
+                <div class="item-name">
+                  <img src="{{item.img}}" />
+                  <span>{{item.name}}</span>
+                </div>
+                <div class="item-prop">key: {{item.system.key}}</div>
+                <div class="item-prop">rank: {{item.system.rank}}</div>
+                <div class="item-controls">
+                  <a class="item-edit" title="Edit"><i class="fas fa-edit"></i></a>
+                  <a class="item-delete" title="Delete"><i class="fas fa-trash"></i></a>
+                </div>
+              </li>
+            {{/each}}
+          </ol>
+        </div>
+      </div>
+
+      <!-- EQUIPMENT -->
+      <div class="tab" data-group="primary" data-tab="equipment">
+        <div class="pane">
+          <div class="section-header">
+            <h3>Weapons</h3>
+            <div class="controls">
+              <button type="button" class="item-create" data-type="weapon">+ Weapon</button>
+            </div>
+          </div>
+          <ol class="item-list">
+            {{#each weapons as |item|}}
+              <li class="item" data-item-id="{{item.id}}">
+                <div class="item-name">
+                  <img src="{{item.img}}" />
+                  <span>{{item.name}}</span>
+                </div>
+                <div class="item-prop">{{item.system.weaponDice}}</div>
+                <div class="item-prop">{{item.system.skillKey}}</div>
+                <div class="item-controls">
+                  <a class="item-edit" title="Edit"><i class="fas fa-edit"></i></a>
+                  <a class="item-delete" title="Delete"><i class="fas fa-trash"></i></a>
+                </div>
+              </li>
+            {{/each}}
+          </ol>
+
+          <div class="section-header">
+            <h3>Armor</h3>
+            <div class="controls">
+              <button type="button" class="item-create" data-type="armor">+ Armor</button>
+            </div>
+          </div>
+          <ol class="item-list">
+            {{#each armors as |item|}}
+              <li class="item" data-item-id="{{item.id}}">
+                <div class="item-name">
+                  <img src="{{item.img}}" />
+                  <span>{{item.name}}</span>
+                </div>
+                <div class="item-prop">DR {{item.system.dr}}</div>
+                <div class="item-controls">
+                  <a class="item-edit" title="Edit"><i class="fas fa-edit"></i></a>
+                  <a class="item-delete" title="Delete"><i class="fas fa-trash"></i></a>
+                </div>
+              </li>
+            {{/each}}
+          </ol>
+
+          <div class="section-header">
+            <h3>Gear</h3>
+            <div class="controls">
+              <button type="button" class="item-create" data-type="gear">+ Gear</button>
+            </div>
+          </div>
+          <ol class="item-list">
+            {{#each gear as |item|}}
+              <li class="item" data-item-id="{{item.id}}">
+                <div class="item-name">
+                  <img src="{{item.img}}" />
+                  <span>{{item.name}}</span>
+                </div>
+                <div class="item-controls">
+                  <a class="item-edit" title="Edit"><i class="fas fa-edit"></i></a>
+                  <a class="item-delete" title="Delete"><i class="fas fa-trash"></i></a>
+                </div>
+              </li>
+            {{/each}}
+          </ol>
+        </div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="tab" data-group="primary" data-tab="settings">
+        <div class="pane">
+          <h3>System Settings (per-actor)</h3>
+          <div class="settings-grid">
+            <div class="setting-row">
+              <label>Accent Theme</label>
+              <select name="system.settings.accentPreset" class="accent-preset">
+                <option value="gold" {{#if (eq system.settings.accentPreset "gold")}}selected{{/if}}>Gold (Imperium)</option>
+                <option value="red" {{#if (eq system.settings.accentPreset "red")}}selected{{/if}}>Red</option>
+                <option value="blue" {{#if (eq system.settings.accentPreset "blue")}}selected{{/if}}>Blue</option>
+                <option value="green" {{#if (eq system.settings.accentPreset "green")}}selected{{/if}}>Green</option>
+                <option value="purple" {{#if (eq system.settings.accentPreset "purple")}}selected{{/if}}>Purple</option>
+                <option value="steel" {{#if (eq system.settings.accentPreset "steel")}}selected{{/if}}>Steel</option>
+                <option value="custom" {{#if (eq system.settings.accentPreset "custom")}}selected{{/if}}>Custom</option>
+              </select>
+            </div>
+            <div class="setting-row">
+              <label>Accent Color</label>
+              <input type="color" name="system.settings.accent" value="{{system.settings.accent}}" class="accent-color" />
+            </div>
+            <div class="setting-row">
+              <label>Skill Reduces</label>
+              <select name="system.settings.skillReduces">
+                <option value="range-only" {{#if (eq system.settings.skillReduces "range-only")}}selected{{/if}}>Range Only (recommended)</option>
+                <option value="full-tn" {{#if (eq system.settings.skillReduces "full-tn")}}selected{{/if}}>Full TN</option>
+              </select>
+            </div>
+            <div class="setting-row">
+              <label>Minimum TN</label>
+              <input type="number" name="system.settings.minTN" value="{{system.settings.minTN}}" min="0" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</form>

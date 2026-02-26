@@ -1,0 +1,67 @@
+{
+  "IMPERIUMD8.SystemName": "Imperium D8 Skirmish",
+
+  "IMPERIUMD8.Actor.Character": "Character",
+  "IMPERIUMD8.Item.Weapon": "Weapon",
+  "IMPERIUMD8.Item.Skill": "Skill",
+  "IMPERIUMD8.Item.Armor": "Armor",
+  "IMPERIUMD8.Item.Gear": "Gear",
+
+  "IMPERIUMD8.Stats.STR": "STR",
+  "IMPERIUMD8.Stats.DEX": "DEX",
+  "IMPERIUMD8.Stats.END": "END",
+  "IMPERIUMD8.Stats.AWR": "AWR",
+  "IMPERIUMD8.Stats.INT": "INT",
+  "IMPERIUMD8.Stats.WIL": "WIL",
+
+  "IMPERIUMD8.Derived.DEF": "DEF",
+  "IMPERIUMD8.Derived.Resolve": "Resolve",
+
+  "IMPERIUMD8.Trackers.Wounds": "Wounds",
+  "IMPERIUMD8.Trackers.Stress": "Stress",
+  "IMPERIUMD8.Armor.DR": "Armor DR",
+
+  "IMPERIUMD8.Skills.marksmanship": "Marksmanship",
+  "IMPERIUMD8.Skills.quickdraw": "Quickdraw",
+  "IMPERIUMD8.Skills.targetAcquisition": "Target Acquisition",
+
+  "IMPERIUMD8.Skills.closeCombat": "Close Combat",
+  "IMPERIUMD8.Skills.takedown": "Takedown",
+  "IMPERIUMD8.Skills.fortitude": "Fortitude",
+
+  "IMPERIUMD8.Skills.hacking": "Hacking",
+  "IMPERIUMD8.Skills.demolitions": "Demolitions",
+  "IMPERIUMD8.Skills.fieldMedicine": "Field Medicine",
+
+  "IMPERIUMD8.Skills.resolveTraining": "Resolve Training",
+  "IMPERIUMD8.Skills.interrogation": "Interrogation",
+  "IMPERIUMD8.Skills.tactics": "Tactics",
+
+  "IMPERIUMD8.Skills.stealth": "Stealth",
+  "IMPERIUMD8.Skills.athletics": "Athletics",
+  "IMPERIUMD8.Skills.survival": "Survival",
+  "IMPERIUMD8.Skills.persuasion": "Persuasion",
+  "IMPERIUMD8.Skills.mechanics": "Mechanics",
+
+  "IMPERIUMD8.UI.RollRanged": "Ranged Attack",
+  "IMPERIUMD8.UI.RollMelee": "Melee Attack",
+  "IMPERIUMD8.UI.RollCheck": "Skill/Stat Check",
+  "IMPERIUMD8.UI.RangeInches": "Range (in)",
+  "IMPERIUMD8.UI.Obstacles": "Obstacles",
+  "IMPERIUMD8.UI.TargetDEF": "Target DEF",
+  "IMPERIUMD8.UI.TargetTN": "Target TN",
+  "IMPERIUMD8.UI.UseWeapon": "Weapon",
+  "IMPERIUMD8.UI.UseSkill": "Skill",
+  "IMPERIUMD8.UI.MinTN": "Min TN",
+
+  "IMPERIUMD8.Weapons.smallPistol": "Small Caliber Pistol (+1d6)",
+  "IMPERIUMD8.Weapons.pistol": "Pistol (+1d8)",
+  "IMPERIUMD8.Weapons.shotgun": "Shotgun (+3d6)",
+  "IMPERIUMD8.Weapons.carbine": "Carbine (+2d8)",
+  "IMPERIUMD8.Weapons.rifle": "Rifle (+2d10)",
+  "IMPERIUMD8.Weapons.heavy": "Heavy (+2d12)",
+
+  "IMPERIUMD8.WeaponCategory.melee": "Melee",
+  "IMPERIUMD8.WeaponCategory.ranged": "Ranged",
+  "IMPERIUMD8.WeaponCategory.heavy": "Heavy"
+}
